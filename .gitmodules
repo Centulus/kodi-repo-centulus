@@ -1,0 +1,3 @@
+[submodule "repo/plugin.video.crunchyroll"]
+	path = repo/plugin.video.crunchyroll
+	url = https://github.com/Centulus/plugin.video.crunchyroll.git
