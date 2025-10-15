@@ -95,6 +95,27 @@ def zip_addon(addon_dir: Path, out_root: Path, addon_id: str, version: str) -> P
     return zip_path
 
 
+def prune_old_zips(out_root: Path, addon_id: str, keep_version: str) -> None:
+    """Remove older zips and their .md5 for a given addon, keeping only the current version."""
+    out_dir = out_root / addon_id
+    if not out_dir.exists():
+        return
+    keep_name = f"{addon_id}-{keep_version}.zip"
+    for entry in out_dir.iterdir():
+        if not entry.is_file():
+            continue
+        name = entry.name
+        if name.startswith(f"{addon_id}-") and name.endswith('.zip') and name != keep_name:
+            try:
+                entry.unlink()
+                md5p = out_dir / (name + '.md5')
+                if md5p.exists():
+                    md5p.unlink()
+                log(f"Pruned old zip {name}")
+            except Exception as e:
+                log(f"Warning: failed to prune {name}: {e}")
+
+
 def build_addons_xml(addon_dirs: list[Path], out_dir: Path) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     chunks = []
@@ -137,6 +158,8 @@ def main():
             # ensure minimal assets for repository addon only
             ensure_placeholder_assets(addon_dir)
         zpath = zip_addon(addon_dir, ZIPS_DIR, addon_id, version)
+        # prune older zips for this addon, keep only current version
+        prune_old_zips(ZIPS_DIR, addon_id, version)
         if addon_id == repo_id:
             repo_zip = zpath
             repo_version = version
