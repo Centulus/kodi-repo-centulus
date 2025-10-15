@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="plugin.video.crunchyroll" name="Crunchyroll" version="3.5.3" provider-name="smirgol">
+<addon id="plugin.video.crunchyroll" name="Crunchyroll" version="3.5.5" provider-name="smirgol">
     <requires>
-        <import addon="xbmc.python" version="3.0.1"/>
-        <import addon="script.module.inputstreamhelper" version="0.3.3"/>
-        <import addon="script.module.requests" version="2.31.0"/>
+        <import addon="xbmc.python" version="3.0.1" />
+        <import addon="script.module.inputstreamhelper" version="0.3.3" />
+        <import addon="script.module.requests" version="2.31.0" />
     </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
@@ -22,6 +22,7 @@
         <disclaimer lang="de_DE">HINWEIS: Du MUSST PREMIUM Mitglied sein um dieses Plugin zu benutzen</disclaimer>
         <disclaimer lang="es_ES">Atención: Necesitas ser miembro PREMIUM para utilizar este Plugin</disclaimer>
         <news>
+            v3.5.4 (2025.10.15) - test update detection
             v3.5.0 (2025.03.26) - add configurable auto skipping of intro/outro (thanks lumiru)
             v3.4.0 (2025.03.26) - streamline version numbers across kodi releases and adapt to MAJOR.MINOR.PATCH format
             v3.3.0.16 (2024.04.28) - add initial multi profile support
@@ -43,10 +44,10 @@
             v3.3.0 (2023.03.08) - Update for Kodi 20 Nexus
         </news>
         <license>GNU Affero General Public License, v3</license>
-        <forum/>
+        <forum />
         <website>https://www.crunchyroll.com/</website>
         <source>https://github.com/smirgol/plugin.video.crunchyroll</source>
-        <email/>
+        <email />
         <assets>
             <icon>resources/icon.png</icon>
             <fanart>resources/fanart.jpg</fanart>
